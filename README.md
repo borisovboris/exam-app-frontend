@@ -1,27 +1,46 @@
-# ExamApp
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-exam-app">About exam-app</a>
+    </li>
+    
+ <li>
+      <a href="#used-technologies">Used Technologies</a>
+ </li>
+   
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
+    
+  </ol>
+</details>
 
-## Development server
+## About exam-app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This is an online exam platform that allows teachers and students to create accounts. Teachers can create subjects and a subject can have topics with different questions. A question is of an open (essay) or closed (multiple choice) type. When exams are created, a question can be reused in multiple exams. Teachers can add students to their subjects to test them. Furthermore teachers can add other teachers to their subject, to assist them. A session can be started by a teacher, where a selected exam is used to test selected students. The application asseses closed questions automatically, and answers to open questions are manually graded by teachers.
 
-## Code scaffolding
+## Used Technologies
+* Angular 11
+* Pure CSS and HTML
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Lazy Loaded Modules
 
-## Build
+The application is broken down in these modules: 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Screenshots From The Application
 
-## Running unit tests
+## Future Work
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Adding a global exception handler 
+* Improving interfaces
+* Extending data validation
+* Changing folder structure 
+* Writing tests
+* Refactoring the CSS
 
-## Running end-to-end tests
+## Acknowledgements
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
