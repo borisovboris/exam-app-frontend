@@ -1,0 +1,55 @@
+<nav class="navbar">
+    <div class="heading-nav">
+        <h2>Student exam details</h2>
+    </div>
+</nav>
+
+<div *ngIf="studentExam$ | async as studentExam" class="page-wrapper">
+    
+    <main class="page">
+        <div class="page-details">
+            <h3><b>Student:</b> {{studentExam.student.username}}</h3>
+            <h3><b>Faculty number:</b> {{studentExam.student.facultyNumber}}</h3>
+        </div>
+
+        <ul class="exam-question-list">
+            <ng-container *ngFor="let question of studentExamQuestions$ | async; let i = index;">
+                <ng-container *ngIf="question.type == 'open'; else closedQuestionTemplate">
+                    <li class="exam-question">
+                        <div class="exam-question-title">
+                            <h2>{{i + 1}}. {{question.title}}</h2>
+                        </div>
+                        <h3>({{question.maxPoints}} Points)</h3>
+                        <textarea class="exam-textarea" disabled placeholder="{{question.studentAnswerText || 'Not answered'}}"></textarea>
+                        <div class="open-question-assessment">
+                            <p>Max points: {{question.maxPoints}}</p>
+                            <p>Earned points:</p>
+                            <input placeholder="{{question.earnedPoints || 0}}" id="earned-points-box"
+                                (keyup)="assessAnswer($event, question.studentAnswerId)" type="number" min="0"
+                                max="{{question.maxPoints}}" [disabled]="!question.studentAnswerId">
+                        </div>
+                    </li>
+                </ng-container>
+
+                <ng-template #closedQuestionTemplate>
+                    <li class="exam-question">
+                        <div class="exam-question-title">
+                            <h2>{{i + 1}}. {{question.title}}</h2>
+                        </div>
+                        <h3>({{question.maxPoints}} Points)</h3>
+                        <h3>Correct choices: {{question.numCorrectChoices}}</h3>
+                        <ul class="exam-choice-list">
+                            <li class="exam-choice" *ngFor="let choice of question.choices">
+                                <input type="checkbox" disabled [checked]="choice.answered">
+                                <p>{{choice.text}} <i>({{choice.isCorrect}})</i></p>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-template>
+
+            </ng-container>
+        </ul>
+
+
+    </main>
+</div>

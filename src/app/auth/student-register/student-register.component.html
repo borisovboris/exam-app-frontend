@@ -1,0 +1,33 @@
+<div class="form-wrapper">
+
+    <div class="center-form">
+        <form [formGroup]="registerForm" class="form-box">
+            <h2>Student sign up</h2>
+            <div>
+                <input formControlName="username" type="text" 
+                placeholder="Username" class="blue-input">
+
+                <input formControlName="email" type="email" 
+                placeholder="Email" class="blue-input">
+
+                <input formControlName="facultyNumber" type="text" 
+                placeholder="Faculty number" class="blue-input">
+
+                <input formControlName="password" type="password" 
+                placeholder="Password" class="blue-input">
+
+                <input formControlName="confirmPassword" type="password" 
+                placeholder="Confirm password" class="blue-input">
+            </div>
+            <button class="hover form-blue-button auth-bottom-button" type="submit"
+            [disabled]="this.registerForm.invalid" (click)="submit()">
+                Sign up
+            </button>
+        </form>
+
+        <p class="form-bottom-text">Already have a student account? <span class="hover"
+                routerLink="/auth/student-login">
+                <b>Sign in.</b>
+            </span></p>
+    </div>
+</div>

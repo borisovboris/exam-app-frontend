@@ -1,0 +1,14 @@
+<div class="form-wrapper">
+
+    <div class="center-form">
+        <form [formGroup]="examEditForm" (ngSubmit)="submit()" class="form-box">
+            <h1>Edit exam</h1>
+            <div id="inputs">
+                <input formControlName="name" type="text" placeholder="Name" class="blue-input">
+            </div>
+
+            <button class="hover form-blue-button bottom-button" type="submit"
+                [disabled]="this.examEditForm.invalid">Edit</button>
+        </form>
+    </div>
+</div>

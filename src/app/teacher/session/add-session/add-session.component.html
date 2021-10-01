@@ -1,0 +1,77 @@
+<ng-container *ngIf="subject$ | async as subject">
+
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="heading-nav">
+                <h2 id="heading"> Start session for {{subject.name | uppercase }} </h2>
+            </div>
+        </nav>
+
+        <div class="flex-container">
+
+            <div class="flex-item left">
+                <h2>Students to add</h2>
+
+
+                <div *ngIf="students.controls.length; else empty;">
+                    <div class="student-flex-container">
+                        <div *ngFor="let student of students.controls; index as i" class="student-flex-item box-shadow">
+                            <input type="checkbox" [(ngModel)]="students.controls[i].value.isChecked">
+                            <div class="student-info">
+                                <p>{{student.value.email}}</p>
+                                <p>{{student.value.facultyNumber}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ng-template #empty>
+                    <p id="empty">This subject doesn't have any students yet.</p>
+                </ng-template>
+
+            </div>
+
+            <div class="flex-item right box-shadow">
+                <form [formGroup]="sessionForm">
+                    <h2>Start session</h2>
+
+                    <input type="text" placeholder="Session name" class="blue-input" formControlName="name">
+
+                    <div class="input-group">
+                        <h3>Pick an exam <i>(from this subject)</i></h3>
+                        <select formControlName="examId" id="exam-select">
+                            <option *ngFor="let exam of exams$ | async" value="{{exam.id}}">{{exam.name}}</option>
+                        </select>
+                    </div>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput [matDatepicker]="date" #datePicker formControlName="date">
+                        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                        <mat-datepicker #date></mat-datepicker>
+                    </mat-form-field>
+
+                    <div class="input-group">
+                        <h3>Start time</h3>
+                        <input [ngxMatTimepicker]="start" [format]="24" class="blue-input" placeholder="Start time"
+                         formControlName="start">
+                        <ngx-mat-timepicker #start></ngx-mat-timepicker>
+                    </div>
+
+                    <div class="input-group">
+                        <h3>End time</h3>
+                        <input [ngxMatTimepicker]="end" [format]="24" class="blue-input" placeholder="End time"
+                            formControlName="end">
+                        <ngx-mat-timepicker #end></ngx-mat-timepicker>
+                    </div>
+
+                    <button class="hover form-blue-button submit-button" (click)="createSession()" id="session-start-button"
+                    [disabled]="this.sessionForm.invalid">
+                        Start
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</ng-container>

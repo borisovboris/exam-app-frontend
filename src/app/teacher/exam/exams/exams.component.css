@@ -1,0 +1,39 @@
+#add-exam i {
+    font-size: 2rem;
+}
+
+#add-exam {
+    opacity: 0.8;
+}
+
+.rectangle-flex-item {
+    width: 400px;
+    min-height: 200px;
+    background-color: #337575;
+}
+
+.rectangle-flex-item:hover {
+    background-color: #004242;
+}
+
+@media only screen and (min-width: 750px) {
+    .rectangle-flex-item {
+        width: calc(33.333% - 32px);
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+    .rectangle-flex-item {
+        width: calc(25% - 32px);
+    }
+
+}
+
+
+
+
+
+
+
+

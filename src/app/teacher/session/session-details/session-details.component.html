@@ -1,0 +1,35 @@
+<div *ngIf="session$ | async as session" class="page-wrapper">
+    <nav class="navbar">
+        <div class="heading-nav">
+            <h2>Session details</h2>
+        </div>
+    </nav>
+    <div class="page">
+
+        <div class="page-details">
+            <h3><b>Session name:</b> {{session.name}}</h3>
+            <h3><b>Creator:</b> {{session.teacher.username}}</h3>
+            <h3><b>Start time:</b> {{session.startTime | date:'medium'}}</h3>
+            <h3><b>End time:</b> {{session.endTime | date:'medium'}}</h3>
+        </div>
+
+
+        <h2>Student exams</h2>
+        <table class="info-table">
+            <thead>
+                    <th>Student</th>
+                    <th>Faculty number</th>
+                    <th>Results</th>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let studentExam of studentExams$ | async" 
+                routerLink="student-exams/{{studentExam.id}}">
+                    <td data-label="Student">{{studentExam.student.username}}</td>
+                    <td data-label="Faculty number">{{studentExam.student.facultyNumber}}</td>
+                    <td data-label="Results">{{studentExam.totalEarnedPoints}}/{{studentExam.totalMaxPoints}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

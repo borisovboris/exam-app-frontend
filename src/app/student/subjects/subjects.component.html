@@ -1,0 +1,16 @@
+<div class="page-wrapper">
+    <nav class="navbar">
+        <div class="heading-nav">
+            <h2 class="nav-heading">SUBJECTS</h2>
+            <button class="hover white-button log-out-button" (click)="logout()">Log out</button>
+            <button class="hover white-button log-out-button" routerLink="/home">Home</button>
+        </div>
+    </nav>
+    
+    <main class="page">
+
+        <h3>Your subjects</h3>
+        <app-subject-list [subjects$]="subjects$"></app-subject-list>
+        
+    </main>
+</div>

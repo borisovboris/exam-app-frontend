@@ -1,0 +1,63 @@
+<nav class="navbar">
+    <div class="heading-nav">
+        <h2>Student exam details</h2>
+    </div>
+</nav>
+
+<div class="page-wrapper">
+    <main class="page">
+
+        <ng-container *ngIf="studentExam$ | async as studentExam">
+            <div class="page-details">
+                <h3><b>Student:</b> {{studentExam.student.username}}</h3>
+                <h3><b>Faculty number:</b> {{studentExam.student.facultyNumber}}</h3>
+                <h3><b>Start time:</b> {{studentExam.session.startTime | date:'medium'}}</h3>
+                <h3><b>End time:</b> {{studentExam.session.endTime | date:'medium'}}</h3>
+            </div>
+
+            <ul class="exam-question-list">
+                <ng-container
+                    *ngIf="(studentExamQuestions$ | async) as studentExamQuestions; else noQuestionsTemplate">
+                    
+                    <ng-container *ngFor="let question of studentExamQuestions; let i = index">
+
+                        <ng-container *ngIf="question.type == 'open'; else closedQuestionTemplate">
+                            <li class="exam-question">
+                                <div class="exam-question-title">
+                                    <h2>{{i + 1}}. {{question.title}}</h2>
+                                </div>
+                                <h3>({{question.maxPoints}} Points)</h3>
+                                <textarea class="exam-textarea" placeholder="Answer here"
+                                    (keyup)="giveAnswer($event, studentExam.id, question.id)">{{question.studentAnswerText}}</textarea>
+                            </li>
+                        </ng-container>
+
+                        <ng-template #closedQuestionTemplate >
+                            <li class="exam-question">
+                                <div class="exam-question-title">
+                                    <h2>{{i + 1}}. {{question.title}}</h2>
+                                </div>
+                                <h3>({{question.maxPoints}} Points)</h3>
+                                <h3>Correct choices: {{question.numCorrectChoices}}</h3>
+                                <ul class="exam-choice-list">
+                                    <li class="exam-choice" *ngFor="let choice of question.choices">
+                                        <input type="checkbox" [checked]="choice.answered"
+                                            (click)="selectChoice($event, studentExam.id, question.id, choice.sessionChoiceId)">
+                                        <p>{{choice.text}}</p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ng-template>
+
+                    </ng-container>
+
+                </ng-container>
+            </ul>
+        </ng-container>
+
+        <ng-template #noQuestionsTemplate>
+            <p>You cannot access this student exam because it has not started or had already finished.</p>
+        </ng-template>
+    </main>
+
+</div>

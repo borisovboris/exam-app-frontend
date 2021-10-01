@@ -1,0 +1,19 @@
+<div class="form-wrapper">
+
+    <div class="center-form">
+        <form [formGroup]="subjectForm" class="form-box">
+            <h1>Create subject</h1>
+            <div>
+                <input formControlName="name" type="text" placeholder="Name" class="blue-input">
+                
+                <textarea class="form-description" formControlName="description" type="description" 
+                placeholder="Description"></textarea>
+            </div>
+            <button class="hover form-blue-button bottom-button" [disabled]="this.subjectForm.invalid" 
+            type="submit" (click)="submit()">
+                Create
+            </button>
+        </form>
+    </div>
+    
+</div>

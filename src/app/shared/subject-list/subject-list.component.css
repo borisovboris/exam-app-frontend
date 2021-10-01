@@ -1,0 +1,16 @@
+#add-subject i {
+    font-size: 2rem;
+}
+
+#add-subject {
+    opacity: 0.8;
+}
+.rectangle-flex-item {
+    background-color: whitesmoke;
+    color: var(--sherpa-blue);
+}
+
+.rectangle-flex-item:hover {
+    background-color: #E8E8E8;
+}
+

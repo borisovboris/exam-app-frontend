@@ -1,0 +1,152 @@
+.flex-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.flex-item {
+    min-height: 100vh;
+    padding-top: 96px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.flex-item.left {
+    width: 100%;
+    background-color: #E8E8E8;
+}
+
+.flex-item.right {
+    width: 100%;
+    background-color: #F5F5F5;
+}
+
+#empty {
+      margin-top: 1rem;
+}
+
+.student-flex-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.student-flex-item {
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    margin: 5px; 
+    position: relative;
+}
+
+.student-flex-item p {
+    margin: 0px;
+}
+
+.student-info {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    display: block;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.student-flex-item input {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 5%;
+}
+
+.blue-input {
+    display: block;
+    width: 100%;
+}
+
+.input-group {
+    margin: 1rem 0rem;
+}
+
+.input-group *{
+    margin: 0;
+}
+
+#exam-select {
+    min-width: 60%;
+    padding: 0.4rem 0;
+}
+
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 850px) {
+    .flex-container {
+        flex-direction: row;
+    }
+
+    .flex-item.left {
+        width: 70%;
+    }
+    
+    .flex-item.right {
+        width: 30%;
+        height: 100vh;
+        overflow-y: scroll;
+        position: fixed;
+        right: 0;
+    }
+
+    .student-flex-container {
+        flex-direction: row;
+    }
+
+    .student-flex-item {  
+        width: calc(50% - 10px); 
+    }
+
+    .blue-input {
+        width: 100%;
+    }
+
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .flex-container {
+        flex-direction: row;
+    }
+
+    .flex-item.left {
+        width: 70%;
+        height: 1000px;
+    }
+    
+    .flex-item.right {
+        width: 30%;
+        height: 100vh;
+        overflow-y: scroll;
+        position: fixed;
+        right: 0;
+    }
+
+    .student-flex-container {
+        flex-direction: row;
+    }
+
+    .student-flex-item {  
+        width: calc(33.3333% - 10px); 
+    }
+
+    .blue-input {
+        width: 80%;
+    }
+
+}
+
+
+
+
+
+
+
+

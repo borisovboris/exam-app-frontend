@@ -1,0 +1,15 @@
+<ng-container *ngIf="subject$ | async as subject">
+    <div class="form-wrapper">
+
+        <div class="center-form">
+            <form [formGroup]="examForm" (ngSubmit)="submit()" class="form-box">
+                <h1>Create exam</h1>
+                <div id="inputs">
+                    <input formControlName="name" type="text" placeholder="Name" class="blue-input">
+                </div>
+
+                <button class="hover form-blue-button bottom-button" type="submit" [disabled]="this.examForm.invalid">Create</button>
+            </form>
+        </div>
+    </div>
+</ng-container>

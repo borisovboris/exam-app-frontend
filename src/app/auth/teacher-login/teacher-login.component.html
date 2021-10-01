@@ -1,0 +1,20 @@
+<div class="form-wrapper">
+
+    <div class="center-form">
+        <form [formGroup]="loginForm" (ngSubmit)="submit()" class="form-box">
+            <h2>Teacher sign in</h2>
+            <div>
+                <input formControlName="username" type="text" placeholder="Username" class="blue-input">
+                <input formControlName="password" type="password" placeholder="Password" class="blue-input">
+            </div>
+            <button class="hover form-blue-button auth-bottom-button" type="submit"
+            [disabled]="this.loginForm.invalid">
+                Sign in
+            </button>
+        </form>
+
+        <p class="form-bottom-text">Don't have a teacher account? <span class="hover" routerLink="/auth/teacher-register">
+            <b>Sign up.</b>
+        </span></p>
+    </div>
+</div>

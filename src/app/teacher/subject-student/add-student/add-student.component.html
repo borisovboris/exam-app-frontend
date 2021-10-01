@@ -1,0 +1,35 @@
+<div>
+
+        <form>
+            <h1>Add student</h1>
+            <div>
+
+                <div [hidden]="selectedStudent">
+                    <input placeholder="Search by email or faculty number" #input class="blue-input">
+    
+                    <ul class="search-result-list box-shadow">
+                        <ng-container *ngFor="let student of students$ | async">
+                            <li class="hover" (click)="selectStudent(student)">
+                                <div>{{student.email}}</div>
+                                <div>{{student.facultyNumber}}</div>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+
+                <div *ngIf="selectedStudent">
+                    <div class="selected-result box-shadow">
+                        <p>{{selectedStudent.username}}</p>
+                        <p>{{selectedStudent.email}}@outlook.com</p>
+                    </div>
+                    <button id="cancel" class="hover white-button" (click)="deselectStudent()">Cancel</button>
+                </div>
+
+            </div>
+
+            <button id="add" class="hover form-blue-button submit-button" type="button" (click)="submitStudent()"
+            [disabled]="!selectedStudent">
+            Add
+        </button>
+        </form>
+</div>

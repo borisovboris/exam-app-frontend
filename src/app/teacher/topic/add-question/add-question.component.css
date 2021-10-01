@@ -1,0 +1,34 @@
+#add-question-title {
+    margin-bottom: 2rem;
+}
+
+#types {
+    margin: 1rem 0;
+}
+
+#add-choice {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+#choices-list {
+    margin-bottom: 12px 0; 
+}
+
+.choice-box {
+    width: 10%;
+}
+
+.choice {
+    width: calc(70% - 20px); 
+    margin: 0 10px;
+}
+
+.remove-btn {
+    padding: 0.2rem 0.4rem;
+}
+
+.choice-error {
+    margin-left: 28px;
+}
+

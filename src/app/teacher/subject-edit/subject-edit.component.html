@@ -1,0 +1,19 @@
+<div class="form-wrapper">
+
+    <div class="center-form">
+        <form [formGroup]="subjectEditForm" (ngSubmit)="submit()" class="form-box">
+            <h1>Edit subject</h1>
+            <div>
+                <input name="name" formControlName="name" type="text" placeholder="Name" class="blue-input">
+                <textarea class="form-description" name="description" formControlName="description" type="description" placeholder="Description (optional)">
+                </textarea>
+            </div>
+
+            <button class="hover form-blue-button bottom-button" type="submit"
+            [disabled]="this.subjectEditForm.invalid">
+                Edit
+            </button>
+        </form>
+    </div>
+    
+</div>

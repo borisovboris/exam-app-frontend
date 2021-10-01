@@ -1,0 +1,18 @@
+<div class="clearfix">
+    <i class="far fa-times-circle hover close-cross" (click)="closeQuestionDetails()"></i>
+</div>
+
+
+<h3><b>Question title:</b> {{question.title}}</h3>
+<h3><b>Max points:</b> {{question.maxPoints}}</h3>
+
+<ng-container *ngIf="question.questionType.type === 'closed'; else openQuestion">
+    <h3><b>Choices: </b></h3>
+    <p *ngFor="let choice of question.choices">{{choice.text}} <i>({{choice.isCorrect}})</i></p>
+</ng-container>
+
+<ng-template #openQuestion>
+    <p>This is an open question</p>
+</ng-template>
+
+<button class="remove-btn hover submit-button" (click)="deleteQuestion(question.id)">Delete question</button>

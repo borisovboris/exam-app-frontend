@@ -1,0 +1,33 @@
+<form [formGroup]="questionForm">
+    <h4>Question type</h4>
+
+    <div id="types">
+        <div class="hover" *ngFor="let questionType of questionTypes$ | async">
+            <input type="radio" name="type" formControlName="type" value="{{questionType.type}}">
+            <label for="open-type">{{questionType.type}}</label>
+        </div>
+    </div>
+
+    <ng-container *ngIf="questionForm.value.type != '' ">
+        <input placeholder="Question's title" formControlName="title" class="blue-input">
+
+        <input placeholder="Points for correct answer/s" formControlName="maxPoints" class="blue-input">
+    </ng-container>
+
+    <div id="choices-list" *ngIf="questionForm.value.type === 'closed'">
+        <button id="add-choice" class="hover white-button" (click)="addChoice()">Add choice</button>
+        <p>Mark the checkbox of the choices that are correct</p>
+
+        <div formArrayName="choices" *ngFor="let choice of choicesControls; let i = index">
+            <div [formGroupName]="i">
+                <input type="checkbox" formControlName="isCorrect" class="hover checkbox">
+                <input formControlName="text" placeholder="Choice &#8470;{{i + 1}}" class="blue-input choice">
+                <button (click)="removeChoice(i)" class="hover remove-btn">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="hover form-blue-button submit-button" (click)="submitQuestion()">
+        Add question
+    </button>
+</form>

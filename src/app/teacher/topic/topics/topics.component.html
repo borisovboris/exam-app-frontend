@@ -1,0 +1,42 @@
+<ng-container *ngIf="subject$ | async as subject">
+
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="heading-nav">
+                <h2 id="heading">{{ subject.name | uppercase }}</h2>
+            </div>
+
+        </nav>
+
+        <main class="page">
+
+            <h2>Topics</h2>
+
+            <div class="rectangle-flex-container">
+                <div class="rectangle-flex-item hover box-shadow" id="add-topic" routerLink="add">
+                    <div class="rectangle-content">
+                        <h3>
+                            <i class="fas fa-plus"></i>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="rectangle-flex-item hover box-shadow" *ngFor="let topic of topics$ | async"
+                    routerLink="{{topic.id}}">
+                    <div class="rectangle-content">
+                        <h3>
+                            {{ topic.name }}
+                        </h3>
+                    </div>
+                    <div class="edit-strip" routerLink="{{topic.id}}/edit">
+                        <p>Edit</p>
+                    </div>
+                    <div class="delete-strip" (click)="deleteTopic(topic.id); $event.stopPropagation();">
+                        <p>Delete</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</ng-container>

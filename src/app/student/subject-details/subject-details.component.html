@@ -1,0 +1,45 @@
+<ng-container *ngIf="subject$ | async as subject">
+
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="heading-nav">
+                <h2 id="heading"> {{ subject.name | uppercase }}</h2>
+            </div>
+        </nav>
+
+        <main class="page">
+            <h2>Sessions</h2>
+            <ng-container *ngIf="(studentExams$ | async) as studentExams">
+                <table class="info-table" *ngIf=" studentExams.length !== 0; else empty">
+                    <thead>
+                        <th>Subject</th>
+                        <th>Teacher</th>
+                        <th>Session name</th>
+                        <th>Start</th>
+                        <th>Result</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let studentExam of studentExams" routerLink="student-exams/{{studentExam.id}}">
+                            <td data-label="Subject">{{studentExam.subjectName}}</td>
+                            <td data-label="Teacher">{{studentExam.teacher}}</td>
+                            <td data-label="Session name">{{studentExam.sessionName}}</td>
+                            <td data-label="Start">{{studentExam.startTime | date:'medium'}}</td>
+
+                            <td data-label="Result" *ngIf="studentExam.status === 'closed'">
+                                {{studentExam.totalEarnedPoints}}/{{studentExam.totalMaxPoints}}</td>
+                            <td data-label="Result" *ngIf="studentExam.status !== 'closed'">N/A</td>
+
+                            <td data-label="Status">{{ studentExam.status | titlecase }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-container>
+
+            <ng-template #empty>
+                <p>You don't have any sessions yet.</p>
+            </ng-template>
+
+        </main>
+    </div>
+</ng-container>

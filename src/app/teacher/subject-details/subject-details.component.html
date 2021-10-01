@@ -1,0 +1,26 @@
+<ng-container *ngIf="subject$ | async as subject">
+    <div class="page-wrapper">
+
+        <nav class="navbar">
+            <div class="heading-nav">
+                <h2 id="heading">{{subject.name | uppercase}}</h2>
+            </div>
+        </nav>
+
+        <div class="half-flex-container">
+            <div class="half-flex-item left box-shadow">
+                <h2>Subject details</h2>
+                <p><b>Description:</b> {{subject.description}}</p>
+            </div>
+            <div class="half-flex-item right box-shadow">
+                <div class="subject-buttons">
+                    <button class="hover blue-button" routerLink="exams">Exams</button>
+                    <button class="hover blue-button" routerLink="topics">Topics</button>
+                    <button class="hover blue-button" routerLink="teachers">Teachers</button>
+                    <button class="hover blue-button" routerLink="students">Students</button>
+                    <button class="hover blue-button" routerLink="sessions">Sessions</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

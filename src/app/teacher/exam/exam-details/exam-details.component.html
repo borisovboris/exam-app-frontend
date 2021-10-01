@@ -1,0 +1,88 @@
+<ng-container *ngIf="exam$ | async as exam">
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="heading-nav">
+                <h2 id="heading"><b>{{exam.name | uppercase}}</b> - Exam</h2>
+            </div>
+        </nav>
+
+        <div class="half-flex-container">
+
+            <div class="half-flex-item left">
+                <h2 class="subheading">Exam questions</h2>
+                <ng-container *ngIf="(examQuestions$ | async) as examQuestions;">
+                    <ng-container *ngIf="examQuestions.length !== 0; else empty">
+
+                        <ul class="exam-question-list">
+                            <ng-container *ngFor="let examQuestion of examQuestions; let i = index;">
+                                <ng-container
+                                    *ngIf="examQuestion.questionType.type === 'open'; else closedQuestionTemplate">
+                                    <li class="exam-question">
+                                        <div class="exam-question-title">
+                                            <h2>{{i + 1}}. {{examQuestion.title}}</h2>
+                                            <button (click)="removeQuestion(examQuestion.id)"
+                                                class="remove-btn">Remove</button>
+                                        </div>
+                                        <h3>({{examQuestion.maxPoints}} Points)</h3>
+                                        <textarea placeholder="Open question" class="exam-textarea" disabled></textarea>
+                                    </li>
+                                </ng-container>
+
+                                <ng-template #closedQuestionTemplate>
+                                    <li class="exam-question">
+                                        <div class="exam-question-title">
+                                            <h2>{{i + 1}}. {{examQuestion.title}}</h2>
+                                            <button (click)="removeQuestion(examQuestion.id)"
+                                                class="remove-btn">Remove</button>
+                                        </div>
+                                        <h3>({{examQuestion.maxPoints}} Points)</h3>
+                                        <ul class="exam-choice-list">
+                                            <li class="exam-choice" *ngFor="let choice of examQuestion.choices">
+                                                <p>{{choice.text}} <i>({{choice.isCorrect}})</i></p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ng-template>
+                            </ng-container>
+                        </ul>
+                    </ng-container>
+                </ng-container>
+
+                <ng-template #empty>
+                    <p id="empty">No questions have been added to this exam yet.</p>
+                </ng-template>
+
+            </div>
+
+            <div class="half-flex-item right box-shadow">
+                <h2 class="subheading">Choose a topic</h2>
+
+                <select id="topic-select" #select>
+                    <option *ngFor="let topic of topics$ | async" value="{{topic.id}}">
+                        {{topic.name}}
+                    </option>
+                </select>
+                <button (click)="selectTopic(select.value)" class="blue-button">Select</button>
+
+                <ng-container *ngIf="(questions$ | async) as questions;">
+                    <ng-container *ngIf="questions.length !== 0;  else empty">
+                        <ul class="question-list">
+                            <li *ngFor="let question of questions">
+                                <div class="exam-question-title">
+                                    <p>{{question.title}}</p>
+                                    <button (click)="addQuestion(question.id)" class="blue-button">Add</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </ng-container>
+                </ng-container>
+
+                <ng-template #empty>
+                    <p>This topic has no questions yet</p>
+                </ng-template>
+
+            </div>
+
+        </div>
+    </div>
+</ng-container>

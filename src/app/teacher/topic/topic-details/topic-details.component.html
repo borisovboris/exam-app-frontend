@@ -1,0 +1,51 @@
+<ng-container *ngIf="topic$ | async as topic">
+
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="heading-nav">
+                <h2 id="heading">{{ topic.name | uppercase }}</h2>
+            </div>
+        </nav>
+
+        <div class="half-flex-container">
+
+            <div class="half-flex-item left">
+                <h2 class="subheading">Topic questions</h2>
+
+                <ng-container *ngIf="(questions$ | async) as questions">
+                    <ng-container *ngIf="questions.length !== 0; else empty">
+                        <table class="info-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let question of questions" (click)="getQuestion(question.id)">
+                                    <td data-label="Title">{{question.title}}</td>
+                                    <td data-label="Type">{{question.questionType.type | uppercase}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ng-container>
+                </ng-container>
+
+                <ng-template #empty>
+                    <p id="empty">No questions have been added to this topic yet.</p>
+                </ng-template>
+
+            </div>
+
+            <div class="half-flex-item right box-shadow">
+                <app-add-question *ngIf="!showQuestionDetails" (newQuestionEvent)="refreshQuestions()">
+                </app-add-question>
+
+                <app-question-details *ngIf="showQuestionDetails" [question]="selectedQuestion"
+                    (closeQuestionDetailsEvent)="closeQuestionDetails()" (deleteQuestionEvent)="deleteQuestion($event)">
+                </app-question-details>
+            </div>
+
+        </div>
+    </div>
+</ng-container>

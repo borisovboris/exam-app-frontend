@@ -1,0 +1,6 @@
+<router-outlet></router-outlet>
+
+<div *ngIf="showModal" class="modal box-shadow">
+    <h3>{{modalMessage}}</h3>
+    <i class="far fa-times-circle hover close-cross" (click)="showModal = false;"></i>
+</div>

@@ -1,0 +1,25 @@
+#topic-select {
+    min-width: 60%;
+    padding: 0.4rem 0;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.subheading {
+    margin-bottom: 1rem;
+}
+
+.exam-question-title > *{
+    display: inline;
+    margin-right: 0.3rem;
+}
+
+.question-list {
+    list-style: none;
+}
+
+
+
+
+
+

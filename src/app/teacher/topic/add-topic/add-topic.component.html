@@ -1,0 +1,15 @@
+<div class="form-wrapper">
+
+    <div class="center-form">
+        <form [formGroup]="topicForm" (ngSubmit)="submit()" class="form-box">
+            <h1>Create topic</h1>
+            <div>
+                <input formControlName="name" type="text" placeholder="Name" class="blue-input">
+            </div>
+
+            <button class="hover form-blue-button bottom-button" type="submit"
+            [disabled]="this.topicForm.invalid">Create
+            </button>
+        </form>
+    </div>
+</div>

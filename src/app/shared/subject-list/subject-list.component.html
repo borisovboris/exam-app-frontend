@@ -1,0 +1,29 @@
+<div class="rectangle-flex-container">
+
+    <div class="rectangle-flex-item hover box-shadow" 
+    id="add-subject" routerLink="add" *ngIf="occupation === 'teacher'">
+        <div class="rectangle-content">
+            <h3>
+                <i class="fas fa-plus"></i>
+            </h3>
+        </div>
+    </div>
+
+    <div class="rectangle-flex-item hover box-shadow" 
+    *ngFor="let subject of subjects$ | async" routerLink="{{subject.id}}">
+        <div class="rectangle-content">
+            <h3><b>{{ subject.name | uppercase }}</b></h3>
+            <h3>Created by: {{ subject.creator.username }}</h3>
+            <h3>on {{ subject.createdAt | date:'mediumDate'}}</h3>
+        </div>
+
+        <div *ngIf="occupation === 'teacher'">
+            <div class="edit-strip" routerLink="{{subject.id}}/edit">
+                <p>Edit</p>
+            </div>
+            <div class="delete-strip" (click)="deleteSubject(subject.id); $event.stopPropagation();" >
+                <p>Delete</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="form-wrapper">
+
+    <div class="center-form">
+        <form class="form-box">
+            <h1>Add teacher</h1>
+            <div>
+
+                <div [hidden]="selectedTeacher">
+                    <input placeholder="Search by username or email" #input class="blue-input">
+
+                    <ul class="search-result-list box-shadow">
+                        <ng-container *ngFor="let teacher of teachers$ | async">
+                            <li class="hover" (click)="selectTeacher(teacher)">
+                                <div>{{teacher.username}}</div>
+                                <div>{{teacher.email}}</div>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+
+                <div *ngIf="selectedTeacher">
+                    <div class="selected-result box-shadow">
+                        <p>{{selectedTeacher.username}}</p>
+                        <p>{{selectedTeacher.email}}</p>
+                    </div>
+                    <button id="cancel" class="hover white-button" (click)="deselectTeacher()">Cancel</button>
+                </div>
+
+            </div>
+
+            <button class="hover bottom-button form-blue-button" type="button" (click)="submitTeacher()"
+            [disabled]="!selectedTeacher">
+            Add
+        </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<ng-container *ngIf="subject$ | async as subject">
+
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="heading-nav">
+                <h2> {{subject.name | uppercase}}</h2>
+            </div>
+        </nav>
+
+        <div class="half-flex-container">
+
+            <div class="half-flex-item left">
+                <h2>Students</h2>
+
+                <ng-container *ngIf="(students$ | async) as students">
+                    <ng-container *ngIf="students.length !== 0; else empty">
+                        <table class="info-table">
+                            <thead>
+                                <th>Email</th>
+                                <th>Faculty number</th>
+                                <th>Action</th>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let student of students">
+                                    <td data-label=" Email">{{student.email}}</td>
+                                    <td data-label="Faculty number">{{student.facultyNumber}}</td>
+                                    <td data-label="Action" (click)="removeStudentFromSubject(student.id)">Remove</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ng-container>
+                </ng-container>
+
+                <ng-template #empty>
+                    <p id="empty">No students have been added to this subject yet.</p>
+                </ng-template>
+
+            </div>
+
+            <div class="half-flex-item right box-shadow">
+                <app-add-student (newStudentEvent)="refreshStudents()"></app-add-student>
+            </div>
+
+        </div>
+    </div>
+
+</ng-container>
