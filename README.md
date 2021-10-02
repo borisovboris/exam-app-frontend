@@ -3,14 +3,23 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-exam-app">About exam-app</a>
+          <a href="#about-exam-app">About exam-app</a>
     </li>
-    
- <li>
-      <a href="#used-technologies">Used Technologies</a>
- </li>
-   
-
+     <li>
+          <a href="#used-technologies">Used Technologies</a>
+     </li>
+     <li>
+          <a href="#lazy-loaded-modules">Lazy Loaded Modules</a>
+     </li>
+     <li>
+          <a href="#screenshots-from-the-application">Screenshots From The Application</a>
+     </li> 
+     <li>
+          <a href="#future-work">Future Work</a>
+     </li> 
+     <li>
+          <a href="#acknowledgements">Acknowledgements</a>
+     </li> 
     
   </ol>
 </details>
@@ -26,6 +35,9 @@ This is an online exam platform that allows teachers and students to create acco
 ## Lazy Loaded Modules
 
 The application is broken down in these modules: 
+
+![lazy-loading](https://user-images.githubusercontent.com/54534596/135730255-36947906-0413-4fce-85f7-5abc8c39518d.png)
+
 
 ## Screenshots From The Application
 
@@ -66,8 +78,9 @@ The application is broken down in these modules:
 * Refactoring the CSS
 
 ## Acknowledgements
-
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+* [Font Awesome](https://fontawesome.com/)
+* [ngx-mat-timepicker](https://www.npmjs.com/package/ngx-mat-timepicker)
+* [Angular Material Datepicker](https://material.angular.io/components/datepicker/overview)
 
 
 
