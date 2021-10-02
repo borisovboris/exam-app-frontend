@@ -29,6 +29,33 @@ The application is broken down in these modules:
 
 ## Screenshots From The Application
 
+### The home page
+![home](https://user-images.githubusercontent.com/54534596/135709557-fe344705-8fd3-4471-9d76-18d936300296.PNG)
+
+### Student register form
+![student-register](https://user-images.githubusercontent.com/54534596/135709580-f3b0d113-a305-418a-a6b8-f00c998100dc.PNG)
+
+### Teacher view for subjects
+![subjects](https://user-images.githubusercontent.com/54534596/135709598-60a768e6-bfae-4d71-a9db-7fba1414346f.PNG)
+
+### Page for the details of a subject
+![subject-details](https://user-images.githubusercontent.com/54534596/135709633-85cce5f8-e5b5-4995-bd9d-2d50814865a2.PNG)
+
+### Page for the topics of a subject
+![topics](https://user-images.githubusercontent.com/54534596/135709651-d52b855c-5a4f-4a5a-891f-57dc02b32cc3.png)
+
+### Page for the details of a topic 
+![topic-details](https://user-images.githubusercontent.com/54534596/135709703-24e9fe73-ab94-4556-82b7-a5c78a6fa925.PNG)
+
+### Page for the details of an exam
+![exam-details](https://user-images.githubusercontent.com/54534596/135709774-b49f9701-0183-4c59-a9b5-1847e30b6665.PNG)
+
+### Page for viewing and adding students to a subject
+![students](https://user-images.githubusercontent.com/54534596/135709794-5d52436e-af7b-49b1-aa07-d30219205fbc.PNG)
+
+### Page for starting a session
+![start-session](https://user-images.githubusercontent.com/54534596/135709807-4e20da9a-5347-4ab4-90d3-c9077821f3f3.PNG)
+
 ## Future Work
 
 * Adding a global exception handler 
